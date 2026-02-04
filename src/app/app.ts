@@ -1,11 +1,19 @@
-import { Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { CustomerCreditTableComponent } from './components/customer-credit-table/customer-credit-table.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.html',
-  standalone: false,
-  styleUrl: './app.css'
+  standalone: true,
+  styleUrl: './app.css',
+  imports: [CustomerCreditTableComponent],
+  changeDetection: ChangeDetectionStrategy.OnPush
+
 })
 export class App {
-  protected readonly title = signal('demo-rsx');
+    
+  public readonly model = {
+      a: 10,
+      b: 20
+  };
 }

@@ -1,0 +1,66 @@
+<div class="backdrop" (click)="cancel.emit()"></div>
+
+<div class="panel" viewTransitionName="edit-panel">
+  <h3>Edit Customer Credit</h3>
+
+  <form [formGroup]="form">
+
+    <!-- CUSTOMER -->
+    <fieldset formGroupName="customer">
+      <legend>Customer</legend>
+
+      <label>
+        Age
+        <input type="number" formControlName="age" />
+        <small *ngIf="age.touched && age.invalid">
+          Age is required
+        </small>
+      </label>
+
+      <label>
+        Income
+        <input type="number" formControlName="income" />
+        <small *ngIf="income.touched && income.invalid">
+          Income is required
+        </small>
+      </label>
+
+      <label>
+        Employment Years
+        <input type="number" formControlName="employmentYears" />
+        <small *ngIf="employmentYears.touched && employmentYears.invalid">
+          Employment years are required
+        </small>
+      </label>
+    </fieldset>
+
+    <!-- CREDIT -->
+    <fieldset formGroupName="credit">
+      <legend>Credit</legend>
+
+      <label>
+        Credit Score
+        <input type="number" formControlName="score" />
+        <small *ngIf="score.touched && score.invalid">
+          Credit score is required
+        </small>
+      </label>
+
+      <label>
+        Outstanding Debt
+        <input type="number" formControlName="outstandingDebt" />
+        <small *ngIf="outstandingDebt.touched && outstandingDebt.invalid">
+          Outstanding debt is required
+        </small>
+      </label>
+    </fieldset>
+
+    <div class="actions">
+      <button type="button" (click)="cancel.emit()">Cancel</button>
+      <button type="button" (click)="onSave()" [disabled]="form.invalid">
+        Save
+      </button>
+    </div>
+
+  </form>
+</div>

@@ -1,7 +1,13 @@
-import { platformBrowser } from '@angular/platform-browser';
-import { AppModule } from './app/app-module';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { App } from './app/app';
+import { provideRouter, withDebugTracing, withViewTransitions } from '@angular/router';
+import { provideBrowserGlobalErrorListeners } from '@angular/core';
+import { providexRsx } from '@rs-x/angular';
 
-platformBrowser().bootstrapModule(AppModule, {
-  
-})
-  .catch(err => console.error(err));
+bootstrapApplication(App, {
+  providers: [
+    provideRouter([], withDebugTracing(), withViewTransitions()),
+    provideBrowserGlobalErrorListeners(),
+    ...providexRsx(),
+  ]
+}).catch(err => console.error(err));

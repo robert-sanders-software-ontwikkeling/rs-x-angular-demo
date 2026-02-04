@@ -1,0 +1,59 @@
+<h2>Customer Credit Table</h2>
+
+<table class="customer-credit-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Age</th>
+      <th>Income</th>
+      <th>Years</th>
+      <th>Score</th>
+      <th>Debt</th>
+      <th>Risk</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let item of customerCredits | rsx" [class.selected]="item === selected" (click)="select(item)">
+      <td>{{ item.id }}</td>
+
+      <td>
+        <span>
+          <rsx-field expression="customer.age + ` (${customer.age > 40 ? 'becoming old' : 'still young'})`"  [model]="item"></rsx-field>
+        </span>
+      </td>
+
+      <td>
+        <span>
+          {{ item.customer.income }}
+        </span>
+      </td>
+
+      <td>{{ item.customer.employmentYears }}</td>
+      <td>{{ item.credit.score }}</td>
+      <td>{{ item.credit.outstandingDebt }}</td>
+
+      <td class="risk">
+        {{ item.riskClassifier.riskClassification | rsx }}
+      </td>
+
+      <td class="actions">
+        <button *ngIf="!isEditing(item)" (click)="edit(item); $event.stopPropagation()">
+          ✏️
+        </button>
+        <button class="danger" (click)="delete(item); $event.stopPropagation()">
+          🗑
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<rsx-customer-credit-edit *ngIf="editing" 
+  [customerCreditRisk]="editing" 
+  (cancel)="closeEditor()" 
+  (save)="save($event)" 
+  [class.open]="editing">
+
+</rsx-customer-credit-edit>
