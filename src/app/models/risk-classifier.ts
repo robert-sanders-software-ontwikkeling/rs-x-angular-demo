@@ -1,9 +1,9 @@
 import { IExpression, IExpressionFactory } from '@rs-x/expression-parser';
 import { BehaviorSubject } from 'rxjs';
-import { IRiskCalcParameters } from '../services/risk.service';
 import { ICredit } from './credit.interface';
 import { ICustomer } from './customer.interface';
 import { IRiskClassifier } from './risk-classifier.interface';
+import { IRiskCalcParameters } from './risk-calc-parameters.interface';
 
 interface IRiskModel {
     readonly customer: BehaviorSubject<ICustomer>;
