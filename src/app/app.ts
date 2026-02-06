@@ -10,10 +10,4 @@ import { CustomerCreditTableComponent } from './components/customer-credit-table
   changeDetection: ChangeDetectionStrategy.OnPush
 
 })
-export class App {
-    
-  public readonly model = {
-      a: 10,
-      b: 20
-  };
-}
+export class App {}

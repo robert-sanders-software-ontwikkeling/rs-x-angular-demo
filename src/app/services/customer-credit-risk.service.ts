@@ -1,10 +1,10 @@
 import { inject, Injectable } from '@angular/core';
 import { IExpressionFactoryToken } from '@rs-x/angular';
-import { ICredit } from '../models/credit.interface';
 import { ICustomerCredit, ICustomerCreditRisk } from '../models/customer-credit-risk.interface';
-import { ICustomer } from '../models/customer.interface';
 import { RiskClassifier } from '../models/risk-classifier';
-import { IRiskCalcParameters, RiskService } from './risk.service';
+import { RiskService } from './risk.service';
+import { IRiskCalcParameters } from '../models/risk-calc-parameters.interface';
+
 
 
 @Injectable({ providedIn: 'root' })

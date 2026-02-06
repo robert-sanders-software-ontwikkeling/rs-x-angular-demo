@@ -1,18 +1,7 @@
 import { Injectable } from '@angular/core';
-
-export interface IMarket {
-  readonly baseInterestRate: number;
-}
-
-export interface IRisk {
-  readonly volatilityIndex: number;
-  readonly recessionProbability: number;
-}
-
-export interface IRiskCalcParameters {
-  readonly market: IMarket;
-  readonly risk: IRisk;
-}
+import { IRiskCalcParameters } from '../models/risk-calc-parameters.interface';
+import { IMarket } from '../models/market.interface';
+import { IRisk } from '../models/risk.interface';
 
 @Injectable({ providedIn: 'root' })
 export class RiskService {
